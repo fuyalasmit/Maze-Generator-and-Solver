@@ -8,7 +8,8 @@
 class Maze {
 public:
     Maze(int width, int height);
-    void generate();
+    //void generate();
+    void generateAnimated(sf::RenderWindow& window);
     void draw(sf::RenderWindow& window);
 
 private:
