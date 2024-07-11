@@ -36,7 +36,7 @@ void GUI::run() {
         window.display();
     }
 }
-
+/* 
 void GUI::handleEvents() {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -56,6 +56,32 @@ void GUI::handleEvents() {
         }
     }
 }
+*/
+
+void GUI::handleEvents() {
+    sf::Event event;
+    while (window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
+        }
+        else if (event.type == sf::Event::MouseButtonPressed) {
+            sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+            if (generateMazeButton.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                maze.generateAnimated(window); // Call animated maze generation
+                isSolving = false;
+            }
+            else if (aStarButton.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                solver.solve(); // Call A* solver to find the solution path
+                isSolving = true;
+            }
+        }
+    }
+}
+
+
+
+
+
 
 void GUI::draw() {
     maze.draw(window);
