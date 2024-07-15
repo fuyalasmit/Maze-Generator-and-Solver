@@ -14,7 +14,6 @@ Maze::Maze(int width, int height) : width(width), height(height) {
     }
 }
 
-
 void Maze::generateAnimated(sf::RenderWindow& window) {
     std::stack<Cell*> stack;
     Cell* current = &grid[0][0];
@@ -34,7 +33,7 @@ void Maze::generateAnimated(sf::RenderWindow& window) {
             draw(window);
             window.display();
 
-            //Add a delay to slow down animation
+            // Optional: Add a delay to slow down animation
             sf::sleep(sf::milliseconds(10)); // Adjust delay as needed...
         }
         else if (!stack.empty()) {
@@ -46,8 +45,6 @@ void Maze::generateAnimated(sf::RenderWindow& window) {
         }
     }
 }
-
-
 
 void Maze::draw(sf::RenderWindow& window) {
     for (int y = 0; y < height; ++y) {
@@ -92,22 +89,22 @@ void Maze::draw(sf::RenderWindow& window) {
 void Maze::removeWall(Cell& current, Cell& next) {
     int x = current.getX() - next.getX();
     if (x == 1) {
-        current.removeWall(3);
-        next.removeWall(1);
+        current.walls[3] = false;
+        next.walls[1] = false;
     }
     else if (x == -1) {
-        current.removeWall(1);
-        next.removeWall(3);
+        current.walls[1] = false;
+        next.walls[3] = false;
     }
 
     int y = current.getY() - next.getY();
     if (y == 1) {
-        current.removeWall(0);
-        next.removeWall(2);
+        current.walls[0] = false;
+        next.walls[2] = false;
     }
     else if (y == -1) {
-        current.removeWall(2);
-        next.removeWall(0);
+        current.walls[2] = false;
+        next.walls[0] = false;
     }
 }
 

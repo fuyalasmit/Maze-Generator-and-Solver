@@ -11,9 +11,10 @@ public:
     void generateAnimated(sf::RenderWindow& window);
     void draw(sf::RenderWindow& window);
 
-private:
     int width, height;
     std::vector<std::vector<Cell>> grid;
+
+private:
     void removeWall(Cell& current, Cell& next);
     std::vector<Cell*> getUnvisitedNeighbors(Cell& cell);
 };

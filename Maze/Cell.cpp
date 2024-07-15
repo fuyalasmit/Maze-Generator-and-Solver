@@ -8,7 +8,9 @@ int Cell::getX() const { return x; }
 int Cell::getY() const { return y; }
 
 void Cell::removeWall(int direction) {
-    walls[direction] = false;
+    if (direction >= 0 && direction < 4) {
+        walls[direction] = false;
+    }
 }
 
 bool Cell::hasAllWalls() const {

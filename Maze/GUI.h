@@ -18,11 +18,21 @@ private:
     sf::Font font;
     sf::Text generateMazeButton;
     sf::Text aStarButton;
-    bool isSolving;
+    sf::Text mazeSizeLabel;
+    sf::Text mazeSizeValue;
+    sf::RectangleShape increaseSizeButton;
+    sf::RectangleShape decreaseSizeButton;
+    int mazeSize;
 
     void handleEvents();
     void draw();
     void initializeGUI();
+    bool isGenerateMazeButtonClicked(sf::Vector2i mousePos);
+    bool isAStarButtonClicked(sf::Vector2i mousePos);
+    bool isIncreaseSizeButtonClicked(sf::Vector2i mousePos);
+    bool isDecreaseSizeButtonClicked(sf::Vector2i mousePos);
+    void increaseMazeSize();
+    void decreaseMazeSize();
 };
 
 #endif
