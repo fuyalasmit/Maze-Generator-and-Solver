@@ -3,8 +3,6 @@
 
 #include <vector>
 #include <queue>
-#include <unordered_map>
-#include <SFML/Graphics.hpp>
 #include "Maze.h"
 
 class AStarSolver {
@@ -12,13 +10,10 @@ public:
     AStarSolver(Maze& maze);
     void solve();
     void drawSolution(sf::RenderWindow& window);
-
 private:
     Maze& maze;
     std::vector<Cell*> solutionPath;
     std::vector<Cell*> getNeighbors(Cell& cell);
     float heuristic(Cell& a, Cell& b);
-    void reconstructPath(std::unordered_map<Cell*, Cell*>& cameFrom, Cell* current);
 };
-
 #endif
