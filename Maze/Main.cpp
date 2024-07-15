@@ -1,8 +1,8 @@
 #include "GUI.h"
 
 int main() {
-    GUI gui(1000, 800);
-    gui.run();
+    GUI gui(1200, 800); //GUI is class, gui is obj
+    gui.run();   
     return 0;
 }
 //
