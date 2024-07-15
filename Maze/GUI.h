@@ -24,6 +24,7 @@ private:
     sf::RectangleShape decreaseSizeButton;
     sf::Text resetButton;
     int mazeSize;
+    sf::Texture wallTexture;
 
     void handleEvents();
     //void draw();

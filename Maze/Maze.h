@@ -8,8 +8,8 @@
 class Maze {
 public:
     Maze(int width, int height);
-    void generateAnimated(sf::RenderWindow& window);
-    void draw(sf::RenderWindow& window);
+    void generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTexture);
+    void draw(sf::RenderWindow& window, const sf::Texture& wallTexture);
 
     int width, height;
     std::vector<std::vector<Cell>> grid;

@@ -6,6 +6,9 @@ GUI::GUI(int width, int height)
     if (!font.loadFromFile("E:/vs/Maze/Maze/arial.ttf")) {
         // Handle error
     }
+    if (!wallTexture.loadFromFile("E:/vs/Maze/Maze/grass.png")) {
+        // Handle error
+    }
     initializeGUI();
 }
 
@@ -55,7 +58,7 @@ void GUI::run() {
     while (window.isOpen()) {
         handleEvents();
         window.clear();
-        maze.draw(window);
+        maze.draw(window, wallTexture);
         window.draw(generateMazeButton);
         window.draw(aStarButton);
         window.draw(mazeSizeLabel);
@@ -78,7 +81,7 @@ void GUI::handleEvents() {
         case sf::Event::MouseButtonPressed: {
             sf::Vector2i mousePos = sf::Mouse::getPosition(window);
             if (isGenerateMazeButtonClicked(mousePos)) {
-                maze.generateAnimated(window);
+                maze.generateAnimated(window,wallTexture);
             }
             else if (isAStarButtonClicked(mousePos)) {
                 solver.solve(); // Implement this function for A* pathfinding

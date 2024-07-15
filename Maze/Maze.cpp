@@ -14,7 +14,7 @@ Maze::Maze(int width, int height) : width(width), height(height) {
     }
 }
 
-void Maze::generateAnimated(sf::RenderWindow& window) {
+void Maze::generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTexture) {
     std::stack<Cell*> stack;
     Cell* current = &grid[0][0];
     current->visited = true;
@@ -30,7 +30,7 @@ void Maze::generateAnimated(sf::RenderWindow& window) {
 
             // Redraw the maze after each modification
             window.clear();
-            draw(window);
+            draw(window, wallTexture); // Pass the texture here
             window.display();
 
             // Optional: Add a delay to slow down animation
@@ -46,7 +46,7 @@ void Maze::generateAnimated(sf::RenderWindow& window) {
     }
 }
 
-void Maze::draw(sf::RenderWindow& window) {
+void Maze::draw(sf::RenderWindow& window, const sf::Texture& wallTexture) {
     int offsetX = 50; // Adjust offset values as needed
     int offsetY = 50;
     int cellSize = 30; // Assuming cell size is constant
@@ -62,31 +62,31 @@ void Maze::draw(sf::RenderWindow& window) {
             float right = left + cellSize;
             float bottom = top + cellSize;
 
-            sf::RectangleShape topWall(sf::Vector2f(cellSize, wallThickness));
-            topWall.setPosition(left, top);
-            topWall.setFillColor(sf::Color::White); // Adjust color as needed
             if (cell.walls[0]) {
+                sf::RectangleShape topWall(sf::Vector2f(cellSize, wallThickness));
+                topWall.setPosition(left, top);
+                topWall.setTexture(&wallTexture);
                 window.draw(topWall);
             }
 
-            sf::RectangleShape rightWall(sf::Vector2f(wallThickness, cellSize));
-            rightWall.setPosition(right, top);
-            rightWall.setFillColor(sf::Color::White); // Adjust color as needed
             if (cell.walls[1]) {
+                sf::RectangleShape rightWall(sf::Vector2f(wallThickness, cellSize));
+                rightWall.setPosition(right, top);
+                rightWall.setTexture(&wallTexture);
                 window.draw(rightWall);
             }
 
-            sf::RectangleShape bottomWall(sf::Vector2f(cellSize, wallThickness));
-            bottomWall.setPosition(left, bottom);
-            bottomWall.setFillColor(sf::Color::White); // Adjust color as needed
             if (cell.walls[2]) {
+                sf::RectangleShape bottomWall(sf::Vector2f(cellSize, wallThickness));
+                bottomWall.setPosition(left, bottom);
+                bottomWall.setTexture(&wallTexture);
                 window.draw(bottomWall);
             }
 
-            sf::RectangleShape leftWall(sf::Vector2f(wallThickness, cellSize));
-            leftWall.setPosition(left, top);
-            leftWall.setFillColor(sf::Color::White); // Adjust color as needed
             if (cell.walls[3]) {
+                sf::RectangleShape leftWall(sf::Vector2f(wallThickness, cellSize));
+                leftWall.setPosition(left, top);
+                leftWall.setTexture(&wallTexture);
                 window.draw(leftWall);
             }
         }
