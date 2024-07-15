@@ -22,15 +22,18 @@ private:
     sf::Text mazeSizeValue;
     sf::RectangleShape increaseSizeButton;
     sf::RectangleShape decreaseSizeButton;
+    sf::Text resetButton;
     int mazeSize;
 
     void handleEvents();
     void draw();
     void initializeGUI();
+    void resetMaze();
     bool isGenerateMazeButtonClicked(sf::Vector2i mousePos);
     bool isAStarButtonClicked(sf::Vector2i mousePos);
     bool isIncreaseSizeButtonClicked(sf::Vector2i mousePos);
     bool isDecreaseSizeButtonClicked(sf::Vector2i mousePos);
+    bool isResetButtonClicked(sf::Vector2i mousePos);
     void increaseMazeSize();
     void decreaseMazeSize();
 };

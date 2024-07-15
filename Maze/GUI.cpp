@@ -18,7 +18,7 @@ void GUI::initializeGUI() {
     generateMazeButton.setPosition(820, 50);
 
     aStarButton.setFont(font);
-    aStarButton.setString("A* Solver");
+    aStarButton.setString("Solve Maze");
     aStarButton.setCharacterSize(24);
     aStarButton.setFillColor(sf::Color::Green);
     aStarButton.setPosition(820, 100);
@@ -42,6 +42,13 @@ void GUI::initializeGUI() {
     decreaseSizeButton.setSize(sf::Vector2f(30, 30));
     decreaseSizeButton.setFillColor(sf::Color::Red);
     decreaseSizeButton.setPosition(1050, 150);
+
+    resetButton.setFont(font);
+    resetButton.setString("Reset Maze");
+    resetButton.setCharacterSize(24);
+    resetButton.setFillColor(sf::Color::Green);
+    resetButton.setPosition(820, 200);
+
 }
 
 void GUI::run() {
@@ -55,6 +62,7 @@ void GUI::run() {
         window.draw(mazeSizeValue);
         window.draw(increaseSizeButton);
         window.draw(decreaseSizeButton);
+        window.draw(resetButton);
         window.display();
     }
 }
@@ -80,6 +88,9 @@ void GUI::handleEvents() {
             else if (isDecreaseSizeButtonClicked(mousePos)) {
                 decreaseMazeSize();
             }
+            else if (isResetButtonClicked(mousePos)) {
+                resetMaze();
+            }
             break;
         }
         default:
@@ -103,6 +114,16 @@ bool GUI::isIncreaseSizeButtonClicked(sf::Vector2i mousePos) {
 bool GUI::isDecreaseSizeButtonClicked(sf::Vector2i mousePos) {
     return decreaseSizeButton.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 }
+
+bool GUI::isResetButtonClicked(sf::Vector2i mousePos) {
+    return resetButton.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+}
+
+void GUI::resetMaze() {
+    maze = Maze(mazeSize, mazeSize);  // Recreate maze with the same size
+}
+
+
 
 void GUI::increaseMazeSize() {
     if (mazeSize < 50) {  // Set a reasonable upper limit
