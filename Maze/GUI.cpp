@@ -3,7 +3,7 @@
 GUI::GUI(int width, int height)
     : window(sf::VideoMode(width, height), "Maze Generator and Solver"),
     maze(20, 20), solver(maze), mazeSize(20) {
-    if (!font.loadFromFile("arial.ttf")) {
+    if (!font.loadFromFile("E:/vs/Maze/Maze/arial.ttf")) {
         // Handle error
     }
     initializeGUI();
@@ -67,6 +67,7 @@ void GUI::run() {
     }
 }
 
+
 void GUI::handleEvents() {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -80,7 +81,7 @@ void GUI::handleEvents() {
                 maze.generateAnimated(window);
             }
             else if (isAStarButtonClicked(mousePos)) {
-                solver.solve();
+                solver.solve(); // Implement this function for A* pathfinding
             }
             else if (isIncreaseSizeButtonClicked(mousePos)) {
                 increaseMazeSize();
@@ -93,11 +94,34 @@ void GUI::handleEvents() {
             }
             break;
         }
+        case sf::Event::MouseMoved: {
+            sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+            if (isGenerateMazeButtonClicked(mousePos)) {
+                generateMazeButton.setFillColor(sf::Color::Yellow); // Hover color
+            }
+            else {
+                generateMazeButton.setFillColor(sf::Color::White);  // Default color
+            }
+            if (isAStarButtonClicked(mousePos)) {
+                aStarButton.setFillColor(sf::Color::Yellow); // Hover color
+            }
+            else {
+                aStarButton.setFillColor(sf::Color::White);  // Default color
+            }
+            if (isResetButtonClicked(mousePos)) {
+                resetButton.setFillColor(sf::Color::Yellow); // Hover color
+            }
+            else {
+                resetButton.setFillColor(sf::Color::White);  // Default color
+            }
+            break;
+        }
         default:
             break;
         }
     }
 }
+
 
 bool GUI::isGenerateMazeButtonClicked(sf::Vector2i mousePos) {
     return generateMazeButton.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
@@ -123,10 +147,8 @@ void GUI::resetMaze() {
     maze = Maze(mazeSize, mazeSize);  // Recreate maze with the same size
 }
 
-
-
 void GUI::increaseMazeSize() {
-    if (mazeSize < 50) {  // Set a reasonable upper limit
+    if (mazeSize < 50) {  //upper limit
         mazeSize++;
         maze = Maze(mazeSize, mazeSize);  // Recreate maze with new size
         mazeSizeValue.setString(std::to_string(mazeSize));
@@ -134,7 +156,7 @@ void GUI::increaseMazeSize() {
 }
 
 void GUI::decreaseMazeSize() {
-    if (mazeSize > 5) {  // Set a reasonable lower limit
+    if (mazeSize > 5) {  //lower limit
         mazeSize--;
         maze = Maze(mazeSize, mazeSize);  // Recreate maze with new size
         mazeSizeValue.setString(std::to_string(mazeSize));
