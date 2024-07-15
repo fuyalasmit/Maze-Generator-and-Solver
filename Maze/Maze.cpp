@@ -50,7 +50,7 @@ void Maze::draw(sf::RenderWindow& window, const sf::Texture& wallTexture) {
     int offsetX = 50; // Adjust offset values as needed
     int offsetY = 50;
     int cellSize = 30; // Assuming cell size is constant
-    int wallThickness = 3; // wall thickness
+    int wallThickness = 5; // wall thickness
 
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
