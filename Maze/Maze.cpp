@@ -47,40 +47,47 @@ void Maze::generateAnimated(sf::RenderWindow& window) {
 }
 
 void Maze::draw(sf::RenderWindow& window) {
+    int offsetX = 50; // Adjust offset values as needed
+    int offsetY = 50;
+    int cellSize = 30; // Assuming cell size is constant
+    int wallThickness = 3; // wall thickness
+
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
             Cell& cell = grid[y][x];
-            int cellSize = 20;
-            sf::RectangleShape rectangle(sf::Vector2f(cellSize, cellSize));
-            rectangle.setPosition(x * cellSize, y * cellSize);
 
+            // Draw rectangles for walls based on cell.walls booleans
+            float left = x * cellSize + offsetX;
+            float top = y * cellSize + offsetY;
+            float right = left + cellSize;
+            float bottom = top + cellSize;
+
+            sf::RectangleShape topWall(sf::Vector2f(cellSize, wallThickness));
+            topWall.setPosition(left, top);
+            topWall.setFillColor(sf::Color::White); // Adjust color as needed
             if (cell.walls[0]) {
-                sf::Vertex line[] = {
-                    sf::Vertex(sf::Vector2f(x * cellSize, y * cellSize)),
-                    sf::Vertex(sf::Vector2f((x + 1) * cellSize, y * cellSize))
-                };
-                window.draw(line, 2, sf::Lines);
+                window.draw(topWall);
             }
+
+            sf::RectangleShape rightWall(sf::Vector2f(wallThickness, cellSize));
+            rightWall.setPosition(right, top);
+            rightWall.setFillColor(sf::Color::White); // Adjust color as needed
             if (cell.walls[1]) {
-                sf::Vertex line[] = {
-                    sf::Vertex(sf::Vector2f((x + 1) * cellSize, y * cellSize)),
-                    sf::Vertex(sf::Vector2f((x + 1) * cellSize, (y + 1) * cellSize))
-                };
-                window.draw(line, 2, sf::Lines);
+                window.draw(rightWall);
             }
+
+            sf::RectangleShape bottomWall(sf::Vector2f(cellSize, wallThickness));
+            bottomWall.setPosition(left, bottom);
+            bottomWall.setFillColor(sf::Color::White); // Adjust color as needed
             if (cell.walls[2]) {
-                sf::Vertex line[] = {
-                    sf::Vertex(sf::Vector2f((x + 1) * cellSize, (y + 1) * cellSize)),
-                    sf::Vertex(sf::Vector2f(x * cellSize, (y + 1) * cellSize))
-                };
-                window.draw(line, 2, sf::Lines);
+                window.draw(bottomWall);
             }
+
+            sf::RectangleShape leftWall(sf::Vector2f(wallThickness, cellSize));
+            leftWall.setPosition(left, top);
+            leftWall.setFillColor(sf::Color::White); // Adjust color as needed
             if (cell.walls[3]) {
-                sf::Vertex line[] = {
-                    sf::Vertex(sf::Vector2f(x * cellSize, (y + 1) * cellSize)),
-                    sf::Vertex(sf::Vector2f(x * cellSize, y * cellSize))
-                };
-                window.draw(line, 2, sf::Lines);
+                window.draw(leftWall);
             }
         }
     }

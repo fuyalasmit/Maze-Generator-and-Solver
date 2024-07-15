@@ -2,7 +2,7 @@
 
 GUI::GUI(int width, int height)
     : window(sf::VideoMode(width, height), "Maze Generator and Solver"),
-    maze(20, 20), solver(maze), mazeSize(20) {
+    maze(15, 15), solver(maze), mazeSize(15) {
     if (!font.loadFromFile("E:/vs/Maze/Maze/arial.ttf")) {
         // Handle error
     }
@@ -15,39 +15,39 @@ void GUI::initializeGUI() {
     generateMazeButton.setString("Generate Maze");
     generateMazeButton.setCharacterSize(24);
     generateMazeButton.setFillColor(sf::Color::White);
-    generateMazeButton.setPosition(820, 50);
+    generateMazeButton.setPosition(1020, 50);
 
     aStarButton.setFont(font);
     aStarButton.setString("Solve Maze");
     aStarButton.setCharacterSize(24);
     aStarButton.setFillColor(sf::Color::White);
-    aStarButton.setPosition(820, 100);
+    aStarButton.setPosition(1020, 100);
 
     mazeSizeLabel.setFont(font);
     mazeSizeLabel.setString("Maze Size:");
     mazeSizeLabel.setCharacterSize(24);
     mazeSizeLabel.setFillColor(sf::Color::White);
-    mazeSizeLabel.setPosition(820, 150);
+    mazeSizeLabel.setPosition(1020, 150);
 
     mazeSizeValue.setFont(font);
     mazeSizeValue.setString(std::to_string(mazeSize));
     mazeSizeValue.setCharacterSize(24);
     mazeSizeValue.setFillColor(sf::Color::White);
-    mazeSizeValue.setPosition(950, 150);
+    mazeSizeValue.setPosition(1150, 150);
 
     increaseSizeButton.setSize(sf::Vector2f(30, 30));
     increaseSizeButton.setFillColor(sf::Color(21, 245, 5));
-    increaseSizeButton.setPosition(1000, 150);
+    increaseSizeButton.setPosition(1200, 150);
 
     decreaseSizeButton.setSize(sf::Vector2f(30, 30));
     decreaseSizeButton.setFillColor(sf::Color::Red);
-    decreaseSizeButton.setPosition(1050, 150);
+    decreaseSizeButton.setPosition(1250, 150);
 
     resetButton.setFont(font);
     resetButton.setString("Reset Maze");
     resetButton.setCharacterSize(24);
     resetButton.setFillColor(sf::Color::White);
-    resetButton.setPosition(820, 200);
+    resetButton.setPosition(1020, 200);
 
 }
 
