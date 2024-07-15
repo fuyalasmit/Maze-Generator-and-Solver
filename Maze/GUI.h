@@ -26,7 +26,7 @@ private:
     int mazeSize;
 
     void handleEvents();
-    void draw();
+    //void draw();
     void initializeGUI();
     void resetMaze();
     bool isGenerateMazeButtonClicked(sf::Vector2i mousePos);

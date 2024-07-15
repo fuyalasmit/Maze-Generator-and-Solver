@@ -14,29 +14,29 @@ void GUI::initializeGUI() {
     generateMazeButton.setFont(font);
     generateMazeButton.setString("Generate Maze");
     generateMazeButton.setCharacterSize(24);
-    generateMazeButton.setFillColor(sf::Color::Green);
+    generateMazeButton.setFillColor(sf::Color::White);
     generateMazeButton.setPosition(820, 50);
 
     aStarButton.setFont(font);
     aStarButton.setString("Solve Maze");
     aStarButton.setCharacterSize(24);
-    aStarButton.setFillColor(sf::Color::Green);
+    aStarButton.setFillColor(sf::Color::White);
     aStarButton.setPosition(820, 100);
 
     mazeSizeLabel.setFont(font);
     mazeSizeLabel.setString("Maze Size:");
     mazeSizeLabel.setCharacterSize(24);
-    mazeSizeLabel.setFillColor(sf::Color::Green);
+    mazeSizeLabel.setFillColor(sf::Color::White);
     mazeSizeLabel.setPosition(820, 150);
 
     mazeSizeValue.setFont(font);
     mazeSizeValue.setString(std::to_string(mazeSize));
     mazeSizeValue.setCharacterSize(24);
-    mazeSizeValue.setFillColor(sf::Color::Green);
+    mazeSizeValue.setFillColor(sf::Color::White);
     mazeSizeValue.setPosition(950, 150);
 
     increaseSizeButton.setSize(sf::Vector2f(30, 30));
-    increaseSizeButton.setFillColor(sf::Color::Green);
+    increaseSizeButton.setFillColor(sf::Color(21, 245, 5));
     increaseSizeButton.setPosition(1000, 150);
 
     decreaseSizeButton.setSize(sf::Vector2f(30, 30));
@@ -46,7 +46,7 @@ void GUI::initializeGUI() {
     resetButton.setFont(font);
     resetButton.setString("Reset Maze");
     resetButton.setCharacterSize(24);
-    resetButton.setFillColor(sf::Color::Green);
+    resetButton.setFillColor(sf::Color::White);
     resetButton.setPosition(820, 200);
 
 }
@@ -140,3 +140,4 @@ void GUI::decreaseMazeSize() {
         mazeSizeValue.setString(std::to_string(mazeSize));
     }
 }
+
