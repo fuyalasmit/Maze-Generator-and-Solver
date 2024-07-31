@@ -19,22 +19,38 @@ void Maze::generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTex
     Cell* current = &grid[0][0];
     current->visited = true;
 
+    float chanceToRemoveExtraWall = 0.3; // 30% chance
+    int cellsPerUpdate = 5;// Adjust this value to control update frequency
+    int cellsProcessed = 0;
+
     while (true) {
         std::vector<Cell*> neighbors = getUnvisitedNeighbors(*current);
         if (!neighbors.empty()) {
             Cell* next = neighbors[rand() % neighbors.size()];
             stack.push(current);
+
             removeWall(*current, *next);
+
+            if ((float)rand() / RAND_MAX < chanceToRemoveExtraWall) {
+                std::vector<Cell*> visitedNeighbors = getVisitedNeighbors(*current);
+                if (!visitedNeighbors.empty()) {
+                    Cell* extraNeighbor = visitedNeighbors[rand() % visitedNeighbors.size()];
+                    removeWall(*current, *extraNeighbor);
+                }
+            }
+
             current = next;
             current->visited = true;
 
-            // Redraw the maze after each modification
-            window.clear();
-            draw(window, wallTexture); // Pass the texture here
-            window.display();
-
-            // Optional: Add a delay to slow down animation
-            sf::sleep(sf::milliseconds(1)); // Adjust delay as needed...
+            if (true) {
+                cellsProcessed++;
+                if (cellsProcessed >= cellsPerUpdate) {
+                    window.clear();
+                    draw(window, wallTexture);
+                    window.display();
+                    cellsProcessed = 0;
+                }
+            }
         }
         else if (!stack.empty()) {
             current = stack.top();
@@ -43,6 +59,13 @@ void Maze::generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTex
         else {
             break;
         }
+    }
+
+    // Ensure the final state is drawn
+    if (true) {
+        window.clear();
+        draw(window, wallTexture);
+        window.display();
     }
 }
 
@@ -113,6 +136,16 @@ void Maze::removeWall(Cell& current, Cell& next) {
         current.walls[2] = false;
         next.walls[0] = false;
     }
+}
+std::vector<Cell*> Maze::getVisitedNeighbors(Cell& cell) {
+    std::vector<Cell*> neighbors;
+    int x = cell.getX();
+    int y = cell.getY();
+    if (x > 0 && grid[y][x - 1].visited) neighbors.push_back(&grid[y][x - 1]);
+    if (x < width - 1 && grid[y][x + 1].visited) neighbors.push_back(&grid[y][x + 1]);
+    if (y > 0 && grid[y - 1][x].visited) neighbors.push_back(&grid[y - 1][x]);
+    if (y < height - 1 && grid[y + 1][x].visited) neighbors.push_back(&grid[y + 1][x]);
+    return neighbors;
 }
 
 std::vector<Cell*> Maze::getUnvisitedNeighbors(Cell& cell) {

@@ -17,6 +17,7 @@ public:
 private:
     void removeWall(Cell& current, Cell& next);
     std::vector<Cell*> getUnvisitedNeighbors(Cell& cell);
+    std::vector<Cell*> getVisitedNeighbors(Cell& cell);
 };
 
 #endif
