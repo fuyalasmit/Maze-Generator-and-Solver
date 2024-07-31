@@ -34,7 +34,7 @@ void Maze::generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTex
             window.display();
 
             // Optional: Add a delay to slow down animation
-            sf::sleep(sf::milliseconds(10)); // Adjust delay as needed...
+            sf::sleep(sf::milliseconds(1)); // Adjust delay as needed...
         }
         else if (!stack.empty()) {
             current = stack.top();

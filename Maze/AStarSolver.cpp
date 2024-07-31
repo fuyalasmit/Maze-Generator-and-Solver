@@ -92,7 +92,7 @@ void AStarSolver::drawSolution(sf::RenderWindow& window) {
         float x = solutionPath[i]->getX() * cellSize + cellSize / 2 + offsetX;
         float y = solutionPath[i]->getY() * cellSize + cellSize / 2 + offsetY;
         lines[i].position = sf::Vector2f(x, y);
-        lines[i].color = sf::Color::Red;
+        lines[i].color = sf::Color::White;
     }
 
     window.draw(lines);
