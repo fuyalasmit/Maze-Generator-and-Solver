@@ -1,3 +1,4 @@
+#include "AStarSolver.h"
 #include "GUI.h"
 
 GUI::GUI(int width, int height)
@@ -59,6 +60,7 @@ void GUI::run() {
         handleEvents();
         window.clear();
         maze.draw(window, wallTexture);
+        solver.drawSolution(window);//added lines of claude code
         window.draw(generateMazeButton);
         window.draw(aStarButton);
         window.draw(mazeSizeLabel);
@@ -81,7 +83,7 @@ void GUI::handleEvents() {
         case sf::Event::MouseButtonPressed: {
             sf::Vector2i mousePos = sf::Mouse::getPosition(window);
             if (isGenerateMazeButtonClicked(mousePos)) {
-                maze.generateAnimated(window,wallTexture);
+                maze.generateAnimated(window, wallTexture);
             }
             else if (isAStarButtonClicked(mousePos)) {
                 solver.solve(); // Implement this function for A* pathfinding
@@ -165,4 +167,3 @@ void GUI::decreaseMazeSize() {
         mazeSizeValue.setString(std::to_string(mazeSize));
     }
 }
-
