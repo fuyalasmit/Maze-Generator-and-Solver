@@ -16,3 +16,4 @@ void Cell::removeWall(int direction) {
 bool Cell::hasAllWalls() const {
     return walls[0] && walls[1] && walls[2] && walls[3];
 }
+

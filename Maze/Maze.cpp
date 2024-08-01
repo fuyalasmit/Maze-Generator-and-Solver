@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
+
 Maze::Maze(int width, int height) : width(width), height(height) {
     srand(static_cast<unsigned int>(time(0)));
     for (int y = 0; y < height; ++y) {
@@ -15,12 +16,12 @@ Maze::Maze(int width, int height) : width(width), height(height) {
 }
 
 void Maze::generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTexture) {
-    std::stack<Cell*> stack;
+    std::stack<Cell*> stack;     // farkera aaune cells ko track garne stack
     Cell* current = &grid[0][0];
     current->visited = true;
 
     float chanceToRemoveExtraWall = 0.3; // 30% chance
-    int cellsPerUpdate = 5;// Adjust this value to control update frequency
+    int cellsPerUpdate = 5;  // animation ko speed ko lagi
     int cellsProcessed = 0;
 
     while (true) {
@@ -38,7 +39,7 @@ void Maze::generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTex
                     removeWall(*current, *extraNeighbor);
                 }
             }
-
+            
             current = next;
             current->visited = true;
 
@@ -70,10 +71,10 @@ void Maze::generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTex
 }
 
 void Maze::draw(sf::RenderWindow& window, const sf::Texture& wallTexture) {
-    int offsetX = 50; // Adjust offset values as needed
+    int offsetX = 50; // offset values 
     int offsetY = 50;
-    int cellSize = 30; // Assuming cell size is constant
-    int wallThickness = 5; // wall thickness
+    int cellSize = 30; 
+    int wallThickness = 5; // grass png ko thickness
 
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
@@ -153,10 +154,10 @@ std::vector<Cell*> Maze::getUnvisitedNeighbors(Cell& cell) {
     int x = cell.getX();
     int y = cell.getY();
 
-    if (x > 0 && !grid[y][x - 1].visited) neighbors.push_back(&grid[y][x - 1]);
-    if (x < width - 1 && !grid[y][x + 1].visited) neighbors.push_back(&grid[y][x + 1]);
-    if (y > 0 && !grid[y - 1][x].visited) neighbors.push_back(&grid[y - 1][x]);
-    if (y < height - 1 && !grid[y + 1][x].visited) neighbors.push_back(&grid[y + 1][x]);
+    if (x > 0 && !grid[y][x - 1].visited) neighbors.push_back(&grid[y][x - 1]);  //left
+    if (x < width - 1 && !grid[y][x + 1].visited) neighbors.push_back(&grid[y][x + 1]);  //right
+    if (y > 0 && !grid[y - 1][x].visited) neighbors.push_back(&grid[y - 1][x]);  // top
+    if (y < height - 1 && !grid[y + 1][x].visited) neighbors.push_back(&grid[y + 1][x]);  //bottom
 
     return neighbors;
 }
