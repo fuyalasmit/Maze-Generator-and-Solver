@@ -4,7 +4,7 @@ This project is a maze generator and solver developed as part of a third-semeste
 
 ## Features
 
-- **Maze Generation**: Uses a backtracking algorithm to create complex and solvable mazes.
+- **Maze Generation**: Uses a recursive backtracking algorithm to create complex and solvable mazes.
 - **Maze Solving**: Implements the A* algorithm to efficiently find the shortest path from the start to the end of the maze.
 - **Graphical User Interface**: Interactive UI to generate and solve mazes, adjust maze size, and reset the maze.
 
@@ -19,7 +19,7 @@ This project is a maze generator and solver developed as part of a third-semeste
     Follow the instructions for your operating system from the [SFML website](https://www.sfml-dev.org/download.php).
 
 3. **Build the project**:
-    - Ensure that SFML is correctly linked in your build system (e.g., Visual Studio, CMake, etc.).
+    - Ensure SFML is correctly linked in your build system (e.g., Visual Studio, CMake, etc.).
     - Compile the source files (`AStarSolver.cpp`, `BackTrack.cpp`, `GUI.cpp`, `Cell.cpp`).
 
 4. **Run the application**:
@@ -46,11 +46,10 @@ This project is a maze generator and solver developed as part of a third-semeste
 
 - **A* Algorithm**: The A* algorithm is used for solving the maze. It is a pathfinding algorithm that finds the shortest path from the start point to the end point. A* uses a heuristic to prioritize paths that seem most promising, making it efficient and effective for solving mazes.
 
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-For any questions or suggestions, please contact me.
+For any questions or suggestions, please contact me at [asmitphuyal4040@gmail.com].
