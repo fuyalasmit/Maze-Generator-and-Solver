@@ -46,10 +46,7 @@ This project is a maze generator and solver developed as part of a third-semeste
 
 - **A* Algorithm**: The A* algorithm is used for solving the maze. It is a pathfinding algorithm that finds the shortest path from the start point to the end point. A* uses a heuristic to prioritize paths that seem most promising, making it efficient and effective for solving mazes.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-For any questions or suggestions, please contact me at [asmitphuyal4040@gmail.com].
+For any questions or suggestions, please contact me [here](asmitphuyal4040@gmail.com)
