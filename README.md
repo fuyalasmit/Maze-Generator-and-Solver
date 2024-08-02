@@ -21,6 +21,7 @@ This project is a maze generator and solver developed as part of a third-semeste
 3. **Build the project**:
     - Ensure SFML is correctly linked in your build system (e.g., Visual Studio, CMake, etc.).
     - Compile the source files (`AStarSolver.cpp`, `BackTrack.cpp`, `GUI.cpp`, `Cell.cpp`).
+    - Make sure to edit constructor in maze.cpp file, since it contains path of font and image.
 
 4. **Run the application**:
     - Execute the compiled binary to start the application.
