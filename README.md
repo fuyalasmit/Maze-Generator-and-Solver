@@ -27,14 +27,22 @@ This project is a maze generator and solver developed as part of a third-semeste
 
 ## Usage
 
-- Use the GUI buttons to generate a new maze or solve an existing one.
-- Adjust the maze size using the provided options.
-- Reset the maze to clear and start a new session.
+- **Generate Maze**: Click the "Generate Maze" button to create a new random maze.
+- **Solve Maze**: Click the "Solve Maze" button to solve the current maze using the A* algorithm.
+- **Adjust Maze Size**: Use the increase/decrease size buttons to change the maze dimensions.
+- **Reset Maze**: Click "Reset Maze" to clear the current maze and reset the size.
 
-## Technologies Used
+## Project Structure
 
-- **C++**: Core programming language used for implementing OOP concepts and algorithms.
-- **SFML**: Graphics library used for rendering the maze and UI components.
+- **main.cpp**: Entry point of the application.
+- **GUI.h / GUI.cpp**: Handles the graphical user interface and event processing.
+- **Maze.h / Maze.cpp**: Contains the logic for maze generation and rendering.
+- **Cell.h / Cell.cpp**: Defines the properties of each cell in the maze.
+- **AStarSolver.h / AStarSolver.cpp**: Implements the A* algorithm to solve the maze.
+
+## Customization
+
+You can customize the appearance of the maze by modifying the `wallTexture` and adjusting the size of the cells in `Maze.cpp`. The colors and font used in the GUI can be changed in `GUI.cpp`.
 
 ## Algorithms
 
@@ -46,7 +54,10 @@ This project is a maze generator and solver developed as part of a third-semeste
 
 - **A* Algorithm**: The A* algorithm is used for solving the maze. It is a pathfinding algorithm that finds the shortest path from the start point to the end point. A* uses a heuristic to prioritize paths that seem most promising, making it efficient and effective for solving mazes.
 
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
 ## Contact
 
-For any questions or suggestions, please contact me [here](asmitphuyal4040@gmail.com)
+For any questions or suggestions, please contact me [here](mailto:asmitphuyal4040@gmail.com).
