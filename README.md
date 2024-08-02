@@ -52,7 +52,7 @@ You can customize the appearance of the maze by modifying the `wallTexture` and 
 
 ### Maze Solving
 
-- **A* Algorithm**: The A* algorithm is used for solving the maze. It is a pathfinding algorithm that finds the shortest path from the start point to the end point. A* uses a heuristic to prioritize paths that seem most promising, making it efficient and effective for solving mazes.
+- **A\* Algorithm**: The A* algorithm is used for solving the maze. It is a pathfinding algorithm that finds the shortest path from the start point to the end point. A* uses a heuristic to prioritize paths that seem most promising, making it efficient and effective for solving mazes.
 
 ## Contributing
 
