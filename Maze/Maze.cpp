@@ -21,7 +21,7 @@ void Maze::generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTex
     current->visited = true;
 
     float chanceToRemoveExtraWall = 0.3; // 30% chance
-    int cellsPerUpdate = 5;  // animation ko speed ko lagi
+    int cellsPerUpdate = 3; // animation ko speed ko lagi
     int cellsProcessed = 0;
 
     while (true) {

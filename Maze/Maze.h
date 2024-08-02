@@ -5,7 +5,12 @@
 #include <SFML/Graphics.hpp>
 #include "Cell.h"
 
-class Maze {
+class mainMaze {
+    //left for further enhancement
+    //if maze generation ko lagi aru kunei algorithm add garna paryo vane
+};
+
+class Maze: public mainMaze {
 public:
     Maze(int width, int height);
     void generateAnimated(sf::RenderWindow& window, const sf::Texture& wallTexture);
