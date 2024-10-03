@@ -45,7 +45,7 @@ This project is a maze generator and solver developed as part of a third-semeste
 
 You can customize the appearance of the maze by modifying the `wallTexture` and adjusting the size of the cells in `Maze.cpp`. The colors and font used in the GUI can be changed in `GUI.cpp`.
 
-## Algorithms
+## Algorithms Used
 
 ### Maze Generation
 
